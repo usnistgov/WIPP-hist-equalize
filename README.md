@@ -29,6 +29,12 @@ The project is leveraging numpy and opencv libraries. It has been developed on W
 ```
 docker build . -t wipp/wipp-hist-equalize-python:0.0.1
 ```
+
+### Build the Web Image Processing (WIPP) Plugin Manifest
+	- open URL:  https://usnistgov.github.io/WIPP-Plugin-Manifest-generator/
+	- type all relevant information into web form
+	- save the file as plugin.json
+	
 ## Execution
 
 ### Run the Python code
@@ -49,6 +55,13 @@ docker run -v "$PWD"/sample-data:/data \
 	--output /data/outputs
 ```
 `-v`: mounts a volume/folder from your machine inside of the Docker container
+
+### Run the WIPP plugin
+	- register the plugin.json in a deployed WIPP instance - see https://github.com/usnistgov/WIPP
+	- upload images from sample-data/inputs as WIPP image collection
+	- create a workflow by adding one step called histogram equalization
+	- run and monitor the workflow execution
+	- download resulting WIPPP image colection
 
 ## Additional Information
 
