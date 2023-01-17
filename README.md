@@ -20,10 +20,11 @@ The project is leveraging numpy and opencv libraries. It has been developed on W
 ## Installation
 
 ### Build Python Virtual Environment 
-
-    - conda create --name hist_equ python=3.7
-	- conda activate hist_equ 
-    - conda install numpy opencv-python
+```
+conda create --name hist_equ python=3.7
+conda activate hist_equ 
+conda install numpy opencv-python
+```
 	
 ### Build the Docker image
 ```
@@ -42,8 +43,8 @@ docker build . -t wipp/wipp-hist-equalize-python:0.0.1
 From this directory:
 ```
 python ./src/histogram_equalization.py \
---input_dir ./sample-data/inputs \
---output_dir ./sample-data/outputs
+--inputImages ./sample-data/inputs \
+--output ./sample-data/outputs
 ```
 
 ### Run the Docker image

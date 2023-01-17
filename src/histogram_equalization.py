@@ -91,9 +91,9 @@ def main():
     # Setup the Argument parsing
     parser = argparse.ArgumentParser(prog='apply histogram equalization to input images in a folder',
                                      description='Script which takes input: folder with images, folder for output images')
-    parser.add_argument('--input_dir', dest='input_dir', type=str,
+    parser.add_argument('--inputImages', dest='input_dir', type=str,
                         help='directory with tif image files (Required)', required=True)
-    parser.add_argument('--output_dir', dest='output_dir', type=str,
+    parser.add_argument('--output', dest='output_dir', type=str,
                         help='output directory where updated image files are saved (Required)', required=True)
 
     args = parser.parse_args()
