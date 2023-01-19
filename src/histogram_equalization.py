@@ -5,7 +5,8 @@
 import os
 import numpy as np
 import cv2 as cv
-from matplotlib import pyplot as plt # this is for debugging
+#from matplotlib import pyplot as plt # this is for debugging
+from tifffile import imwrite
 
 '''
 the method for applying image histogram equalization to one image
@@ -86,7 +87,8 @@ def hist_equal(img_file, input_dir, output_dir):
         print('ERROR: unsupported number of channels')
         return
 
-    cv.imwrite(save_filename, equ)
+    #cv.imwrite(save_filename, equ)
+    imwrite(save_filename, equ, tile=(1024,1024), compression='lzw')
 
 '''
 # CLAHE (Contrast Limited Adaptive Histogram Equalization)
