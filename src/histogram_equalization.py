@@ -23,7 +23,7 @@ def hist_equal(img_file, input_dir, output_dir):
     save_filename = os.path.join(output_dir, img_file)
     img = cv.imread(img_filename, cv.IMREAD_UNCHANGED) #  cv.IMREAD_ANYDEPTH; cv.IMREAD_UNCHANGED - Read Image with Transparency Channel
     print('Image size:', img.size)
-    print(f'dtype: {img.dtype}, shape: {img.shape}, min: {np.min(img)}, max: {np.max(img)}')
+    print('dtype: {img.dtype}, shape: {img.shape}, min: {np.min(img)}, max: {np.max(img)}')
 
     if img.dtype != 'uint8' and img.dtype != 'uint16':
         print('ERROR: unsupported input image format')
@@ -120,7 +120,11 @@ def hist_equal_CLAHE(img_file, input_dir, output_dir):
 
     cv.imwrite(save_filename, equ)
 
-
+# TODO: ImageJ -> Adjust->Brightness/Contrast does a good job in intensity adjustments
+# https://github.com/fiji/Yawi_3D/blob/b1b3f87b098f112dcb7bc7cda3cfbb95368536e9/src/LivelloImmagine.java
+# def adjustBrightness():
+# def adjustContrast():
+#void autoAdjust(ImagePlus imp, ImageProcessor ip) { //Button Auto dell'immagine!
 
 def main():
     import argparse

@@ -8,14 +8,17 @@ The purpose of this work is to adjust image intensities for visualization purpos
 ##  Description of the repository contents
 
 - `src`: contains the source python file
-    **src/histogram_equalization.py** - implementation of standard and Contrast Limited Adaptive Histogram Equalization (CLAHE) histogram equalization. It support 8 BPP and 16 BPP images.
+    **src/histogram_equalization.py** - implementation of standard and 
+    Contrast Limited Adaptive Histogram Equalization (CLAHE) histogram equalization. 
+    It support 8 BPP and 16 BPP grayscale images and RGB color images.
 - `Dockerfile`
 - `plugin.json` manifest
 - `sample-data` folder with test data
 
 ###   Technical installation instructions, including operating system or software dependencies
 
-The project is leveraging numpy and opencv libraries. It has been developed on Windows 11.
+The project is leveraging numpy, tifffile, imagecodecs, and opencv libraries. 
+It has been developed on Windows 11 and tested on MacOSX.
 
 ## Installation
 
@@ -23,9 +26,14 @@ The project is leveraging numpy and opencv libraries. It has been developed on W
 ```
 conda create --name hist_equ python=3.7
 conda activate hist_equ 
-conda install numpy opencv-python
+conda install numpy, opencv-python-headless, tifffile, imagecodecs
 ```
-	
+Note: The current version outputs **compressed** intensity adjusted images using LZW compression. 
+This requires using Python 10.x and up 
+(tested with  10.x and 11.x). If a previous version of Python is used, then the imwrite function must change to 'none' compression flag
+since the 'lzw' flag is not supported on Windows 11 in imagecodes: 
+ [see](https://github.com/cgohlke/imagecodecs/blob/f38d0d4e5db1d08d92742a5d899325fc7c7b56e7/imagecodecs/_imcd.pyx#L854-L856) 
+ 
 ### Build the Docker image
 ```
 docker build . -t wipp/wipp-hist-equalize-python:0.0.1
